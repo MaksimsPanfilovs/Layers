@@ -22,7 +22,7 @@ public interface CarRepository {
     // получить список всех машин
     MyList<Car> getAllCars();
 
-    // получение сучности по id
+    // получение сущности по id
     Car getById(int id);
 
     // получить список только свободных машин

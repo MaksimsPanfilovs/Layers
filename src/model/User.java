@@ -28,7 +28,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        return 0;
+        return Objects.hash(email, password);
     }
 
     public String getEmail() {
