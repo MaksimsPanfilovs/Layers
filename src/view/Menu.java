@@ -3,6 +3,7 @@ package view;
 import model.Car;
 import model.User;
 import service.MainService;
+import utils.MyList;
 
 import java.util.Scanner;
 
@@ -49,11 +50,11 @@ public class Menu {
                 // Todo show car menu
                 break;
             case 2:
+                showUserMenu();
                 // Todo show User menu
                 break;
             case 3:
                 // Todo show admin menu
-                showUserMenu();
                 break;
             default:
                 System.out.println("\nСделайте корректный выбор");
@@ -117,6 +118,18 @@ public class Menu {
 
                 waitRead();
                 break;
+            case 3:
+                // Logout
+                // Есть ли пользователь, который сейчас авторизован.
+                if (service.getActiveUser() == null) {
+                    System.out.println("Сейчас в системе нет авторизированных пользователей");
+                    waitRead();
+                    break;
+                }
+                service.logOut();
+                System.out.println("Вы вышли из системы");
+                waitRead();
+                break;
 
         }
 
@@ -126,6 +139,15 @@ public class Menu {
         System.out.println("\nДля продолжения нажмите Enter...");
         scanner.nextLine();
     }
+
+    public void showCarsList(MyList<Car> cars) {
+        for (Car car : cars) {
+            System.out.printf("%d. %s (%d г.в.). Цена: 2.%f.\n",
+                    car.getId(), car.getModel(), car.getYear(), car.getPrice());
+        }
+    }
+
+
 
 
 }

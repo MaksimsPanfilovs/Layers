@@ -24,6 +24,8 @@ public interface MainService {
 
     void deleteCar(int carId);
 
+    User getActiveUser();
+
 
 
 
